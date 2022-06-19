@@ -20,11 +20,11 @@ services:
     restart: always
     environment:
       - VIRTUAL_HOST=monitor.{DOMAIN}
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=monitor.{DOMAIN}
       - LETSENCRYPT_EMAIL={EMAIL}
-      networks:
-        - nginx-proxy
+    networks:
+      - nginx-proxy
 
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -58,3 +58,4 @@ services:
 networks:
   nginx-proxy:
     name: nginx-proxy
+    external: true
